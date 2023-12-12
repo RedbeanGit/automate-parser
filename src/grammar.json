@@ -1,0 +1,48 @@
+{
+  "tokens": {
+    "terminal": [
+      { "name": "CONTACT", "regex": "contact" },
+      { "name": "RATE", "regex": "rate" },
+      { "name": "DELAY", "regex": "delay" },
+      { "name": "NUMBER", "regex": "[0-9]+" },
+      { "name": "IDENTIFIER", "regex": "[a-zA-Z]+" }
+    ],
+    "non_terminal": ["S", "C", "R", "D"]
+  },
+  "rules": {
+    "S": [["C"]],
+    "C": [
+      [
+        "CONTACT",
+        "IDENTIFIER",
+        "IDENTIFIER",
+        "NUMBER",
+        "NUMBER",
+        "NEWLINE",
+        "D"
+      ],
+      [
+        "CONTACT",
+        "IDENTIFIER",
+        "IDENTIFIER",
+        "NUMBER",
+        "NUMBER",
+        "NEWLINE",
+        "R"
+      ],
+      []
+    ],
+    "R": [
+      ["RATE", "NUMBER", "NUMBER", "NUMBER", "NEWLINE", "R"],
+      ["RATE", "NUMBER", "NUMBER", "NUMBER", "NEWLINE", "D"],
+      ["RATE", "NUMBER", "NUMBER", "NUMBER", "NEWLINE", "C"]
+    ],
+    "D": [
+      ["DELAY", "NUMBER", "NUMBER", "NUMBER", "NEWLINE", "R"],
+      ["DELAY", "NUMBER", "NUMBER", "NUMBER", "NEWLINE", "D"],
+      ["DELAY", "NUMBER", "NUMBER", "NUMBER", "NEWLINE", "C"]
+    ]
+  },
+  "start": [{ "name": "S", "type": "non_terminal" }],
+  "newline_token": "NEWLINE"
+}
