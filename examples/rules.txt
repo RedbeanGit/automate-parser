@@ -1,0 +1,4 @@
+S -> [C]
+C -> contact identifier identifier number number newline [D] | contact identifier identifier number number newline [R] | 
+R -> rate number number number newline [R] | rate number number number newline [D] | rate number number number newline [C]
+D -> delay number number number newline [R] | delay number number number newline [D] | delay number number number newline [C]

@@ -1,0 +1,7 @@
+[
+  { "name": "contact", "regex": "contact" },
+  { "name": "rate", "regex": "rate" },
+  { "name": "delay", "regex": "delay" },
+  { "name": "number", "regex": "[0-9]+" },
+  { "name": "identifier", "regex": "[a-zA-Z]+" }
+]
