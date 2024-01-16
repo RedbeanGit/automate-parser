@@ -34,12 +34,10 @@ def _parse_rule_token(rule_token_raw: str, token_defs: list[TokenDef]) -> Token:
     raise RulesLoaderException(f"Unknown token: {rule_token_raw}")
 
 
-def _parse_rule_alternative(
-    rule_alternative_raw: str, token_defs: list[TokenDef]
-) -> list[Token]:
+def _parse_production(production_raw: str, token_defs: list[TokenDef]) -> list[Token]:
     return [
         _parse_rule_token(token, token_defs)
-        for token in re.split(r"\s+", rule_alternative_raw.strip())
+        for token in re.split(r"\s+", production_raw.strip())
         if token
     ]
 
@@ -67,7 +65,7 @@ def load_rules(rules_path: str, token_defs: list[TokenDef], verbose: bool) -> Gr
 
         rule_name, rule_body = map(str.strip, rule_raw.split("->"))
         rules[rule_name] = [
-            _parse_rule_alternative(alt, token_defs) for alt in rule_body.split("|")
+            _parse_production(alt, token_defs) for alt in rule_body.split("|")
         ]
 
     # check if the grammar has an "S" rule (start rule)

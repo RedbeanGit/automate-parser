@@ -16,6 +16,6 @@ class TokenDef:
         return f"TokenDef(name={self.name}, regex={self.regex})"
 
 
-type RuleAlternative = list[Token]
-type Rule = list[RuleAlternative]
+type Production = list[Token]
+type Rule = list[Production]
 type Grammar = dict[str, Rule]
