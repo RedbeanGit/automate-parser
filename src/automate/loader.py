@@ -88,7 +88,7 @@ def load_tokens(
                 continue
             for token_def in token_defs:
                 if re.match(token_def.regex, word):
-                    tokens.append(Token(token_def.name, True))
+                    tokens.append(Token(token_def.name, True, word))
                     break
             else:
                 raise TokensLoaderException(f"{word} cannot be recognized")

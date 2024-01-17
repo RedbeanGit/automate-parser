@@ -1,7 +1,11 @@
+from types import NoneType
+
+
 class Token:
-    def __init__(self, name: str, terminal: bool):
+    def __init__(self, name: str, terminal: bool, value: str | NoneType = None):
         self.name = name
         self.terminal = terminal
+        self.value = value
 
     def __repr__(self):
         return f"Token(name={self.name}, terminal={self.terminal})"
