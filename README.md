@@ -36,3 +36,9 @@ Where:
 - `<production>` is a production rule. It can be a terminal symbol, a non-terminal symbol or a sequence of symbols.
 
 The grammar needs at least one non-terminal symbol "S" (start symbol).
+
+## Object mapping
+
+If the file match the grammar, you can use a class extending `AbstractHandler` to build objects from tokens.
+
+This project provides a `Spacecom` package as an example of how to use this feature.

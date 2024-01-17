@@ -3,9 +3,10 @@ import sys
 from automate.loader import load_rules, load_token_defs, load_tokens
 from automate.parser import parse
 from automate.utils import log
+from spacecom.handler import SpacecomHandler
 
 
-def main():
+def main() -> None:
     if len(sys.argv) < 3:
         print(
             f"Usage: python {sys.argv[0]} <token_defs_path> <rules_path> <file_path> [-v]"
@@ -40,6 +41,14 @@ def main():
         print("File is OK")
     else:
         print("File is not OK")
+        return None
+
+    # handle tokens
+    spacecome_handler = SpacecomHandler()
+    spacecome_handler.handle(tokens)
+
+    print("Parsed objects:")
+    print(" -", "\n - ".join(str(o) for o in spacecome_handler.objects))
 
 
 if __name__ == "__main__":
